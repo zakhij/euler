@@ -1,7 +1,11 @@
 import math
 
 """
+Problem Statement: The prime factors of 13195 are 5, 7, 13 and 29.
+What is the largest prime factor of the number 600851475143?
+
 Computational Analysis: O(sqrt(N)). Worst case scenario, we check every number up to sqrt(N).
+
 Math: The main math component involves prime numbers and understanding prime factorization. The 
 solution relies on the fundamental theorem of arithmetic, which states that every integer greater 
 than 1 can be uniquely factorized into a product of prime numbers (except for the order of the 
