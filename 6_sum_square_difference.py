@@ -7,9 +7,10 @@ difference between the sum of the squares of the first ten natural numbers and t
 3025 - 385 = 2640. Find the difference between the sum of the squares of the first one hundred natural 
 numbers and the square of the sum.
 
-Computational Analysis:
+Computational Analysis: O(1). We can compute the sum of 1-N and sum of squares of 1-N in constant time.
 
-Math: 
+Math: Going from O(N) to O(1) involves applying the Sum of the First n Natural Numbers (and its derivative
+for sum of squares of the First n Natural Numbers).
 
 '''
 
