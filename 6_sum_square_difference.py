@@ -8,6 +8,7 @@ difference between the sum of the squares of the first ten natural numbers and t
 numbers and the square of the sum.
 
 Computational Analysis: O(1). We can compute the sum of 1-N and sum of squares of 1-N in constant time.
+We also use constant space in this formula. 
 
 Math: Going from O(N) to O(1) involves applying the Sum of the First n Natural Numbers (and its derivative
 for sum of squares of the First n Natural Numbers).
