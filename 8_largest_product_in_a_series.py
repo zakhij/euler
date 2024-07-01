@@ -25,10 +25,14 @@ The four adjacent digits in the 1000-digit number that have the greatest product
 71636269561882670428252483600823257530420752963450
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
-Computational Analysis:
+Computational Analysis: O(N), where N is the number of digits in the number. The length of the sliding window is irrelevant. The
+amount of computation done per sliding window instance is constant. 
 
-Math: 
+DSA: We use a queue data structure to for an efficient implementation of the sliding window, thanks to its constant-time append
+and pop operations. Other than that, we make use of simple loops for iteration and counters for tracking. 
 
+Math: We don't make use of any major mathematical principles, other than understanding the rules of multiplication (especially 
+concerning multiplying 0). 
 '''
 
 #Program Attempt 1
