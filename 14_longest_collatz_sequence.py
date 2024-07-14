@@ -10,11 +10,13 @@ not been proved yet (Collatz Problem), it is thought that all starting numbers f
 
 Which starting number, under one million, produces the longest chain?
 
-Computational Analysis:
+Computational Analysis: Our algorithm operates in linear time: computing the chain for all numbers up to N.
+And we ensure that we only compute the chain for each number once: if it's already computed, we rely on constant-time
+lookups in the dictionary. The space complexity is O(n) also, as we maintain a dict of all numbers' chains.
 
-DSA:
+DSA: We leverage a dictionary for memoization of the chains, replacing redundant computation with fast lookups. 
 
-Math:
+Math: No big math principles used here, besides the fact that chains are inherently recursive. 
 
 '''
 
