@@ -82,7 +82,25 @@ def max_path_sum_finder(input_str: str) -> int:
     return pyramid[0][0]
 
 
+#Program Attempt 2
+#The first program works. But, I'm wondering if I could also use DP going from top to bottom.
+# THE ANSWER IS YES!!
 
+def max_path_sum_finder_top_to_bottom(input_str: str) -> int:
+    pyramid = input_converter(input_str)
+    for i in range(1, len(pyramid)):
+        current_row = pyramid[i]
+        prev_row = pyramid[i-1]
+        for index in range(len(current_row)):
+            if index == 0:
+                current_row[index] += prev_row[index]
+            elif index == len(current_row) - 1:
+                current_row[index] += prev_row[index-1]
+            else:
+                current_row[index] += max(prev_row[index], prev_row[index-1])
+        
+        
+    return max(pyramid[-1])
 
 
 
@@ -106,3 +124,5 @@ if __name__ == '__main__':
 """
 ans = max_path_sum_finder(pyr)
 print(ans)
+ans2 = max_path_sum_finder_top_to_bottom(pyr)
+print(ans2)
