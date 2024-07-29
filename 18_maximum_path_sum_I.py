@@ -84,7 +84,8 @@ def max_path_sum_finder(input_str: str) -> int:
 
 #Program Attempt 2
 #The first program works. But, I'm wondering if I could also use DP going from top to bottom.
-# THE ANSWER IS YES!!
+# THE ANSWER IS YES!! Logic is a bit more complicated due to how sums are calculated going
+# top-down, but yes, it's good.
 
 def max_path_sum_finder_top_to_bottom(input_str: str) -> int:
     pyramid = input_converter(input_str)
