@@ -8,11 +8,16 @@ A leap year occurs on any year evenly divisible by 4, but not on a century unles
 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
-Computational Analysis:
+Computational Analysis: Runtime complexity is O(N), where N represents the number of days we look at. We
+do a constant amount of work per day (create datetime object, check weekday/day properties). Of course,
+this assumes that the datetime method calls are constant time. Space complexity is O(1): we don't use any 
+lists, only a counter. 
 
-DSA:
+DSA: In our final implementation, we don't use any special data structures or algorithms. Not even lists!
+Just a counter and a for loop. And the datetime method calls abstract away algorithmic complexity.
 
-Math:
+Math: In theory, we rely on the math rules determined by the Gregorian calendar. But the datetime library
+abstracts that away for us, thankfully. 
 
 '''
 
@@ -64,9 +69,21 @@ real gains by my iterate of list of X, iterate list of Y, find union between X a
 strategy. It would've been fine to normally iterate. But, more specifically, I should've
 broken down the iterations into separate nested loops corresponding to years/months (since
 a month always has a first day). Anyways, I could've also just used Python's built-in
-libraries for datetime, which I'll do in this implementation.
+libraries for datetime, which I'll do in this implementation. Then, we can just check
+the day and weekday properties on the datetime object for each day from 1901 to 2000.
 """
 
+from datetime import datetime
+from datetime import timedelta
+
+def get_count_of_sundays_on_firsts2(start_date: datetime, end_date: datetime) -> int:
+    num_days = (end_date - start_date).days
+    ctr = 0
+    for i in range(num_days):
+        date_check = start_date + timedelta(days=i)
+        if date_check.day == 1 and date_check.weekday() == 6:
+            ctr += 1
+    return ctr
 
 
 if __name__ == '__main__':
@@ -76,3 +93,4 @@ if __name__ == '__main__':
     num_days = (end_date - start_date).days
 
     print(get_count_of_sundays_on_firsts(num_days))
+    print(get_count_of_sundays_on_firsts2(start_date, end_date))
