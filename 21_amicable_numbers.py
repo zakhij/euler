@@ -9,12 +9,15 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 Computational Analysis: Runtime complexity is O(n * sqrt(n)) where n is the upper limit of the range
 of iteration. We iterate through n numbers, performing the helper function for each n. The helper
-function scales as O(sqrt(n)), giving us the final total runtime complexity. Space complexity is constant,
-we rely only on pointers and counters. 
+function scales as O(sqrt(n)), giving us the final total runtime complexity. Space complexity would beconstant,
+we rely only on pointers and counters, but we have a set that makes it O(n), although in practice less likely. 
 
-DSA:
+DSA: We devise and implement an algorithm to efficiently get the sum of divisors for a given number.
+Other than that, we use basic data structures and logic functions. 
 
-Math: 
+Math: The sum of divisors helper function exploits the mathematical principle that divisors come in pairs 
+that multiply to the target number, with at least one divisor in each pair not exceeding the square root of the target. 
+This property optimizes the search for divisors and reduces the computation complexity of the function.
 
 '''
 

@@ -5,11 +5,14 @@ n! means n x (n-1) x ... 3 x 2 x 1. For example, 10! = 10 x 9 x ... 3 x 2 x 1 = 
 and the sum of the digits in the number 10! is 3+2+6+8+8+0+0=27.
 Find the sum of the digits in the number 100!.
 
-Computational Analysis:
+Computational Analysis: The computational complexity of the solution depends heavily on the
+factorial method in the math library. We can assume linear runtime complexity at worst,
+and space complexity is a function of the length of the value, which according to Sterling's
+approximation is O(n logn).
 
-DSA:
+DSA: Simply list comprehension.
 
-Math:
+Math: We leverage factorial method in the math library to calculate it for us. 
 
 '''
 
@@ -31,7 +34,5 @@ def get_sum_of_digits_factorial(n: int) -> int:
 
 
 if __name__ == '__main__':
-    l = math.factorial(100)
-    print(str(l))
     ans = get_sum_of_digits_factorial(100)
     print(ans)
