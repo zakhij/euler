@@ -13,11 +13,19 @@ as the sum of two abundant numbers is less than this limit.
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
 
-Computational Analysis:
+Computational Analysis: Let's break this down into parts. Creating the abundant numbers list is O(n*sqrt(n))
+runtime complexity and O(k) space complexity, where k is the number of abundant numbers, typically much less than n. 
+Then, creating the set of abundant sums is O(k^2) runtime and space complexity. Then, calculating the sum is O(n). 
+So in total, creating the set of abundant sums dominates.
 
-DSA:
+DSA: We leverage lists and sets as our data structures for holding abundant numbers and then abundant sums. A list
+is first necessary because we iterate over it. Then, we choose a set because we only care about membership. For
+algo's, we again leverage the same O(sqrtn) algo in our helper function for parsing through a number's divisors. 
+We also use a relatively simple pairwise sums algo in generating the abundant sums set. 
 
-Math:
+Math: We leverage the idea of divisors once again. More specifically, the principle that divisors come in pairs and
+that at least one divisor in each pair will not exceed the square root of the target. This is essential in determining
+abundant numbers. 
 
 '''
 
@@ -58,8 +66,9 @@ def get_set_of_abundant_sums(abundant_list: list[int], limit: int) -> set:
     for a in range(len(abundant_list)):
         for b in range(len(abundant_list[a:])):
             two_sum = abundant_list[a] + abundant_list[b]
-            if two_sum < limit:
-                abundant_sum_set.add(two_sum)
+            if two_sum > limit:
+                break
+            abundant_sum_set.add(two_sum)
     
     return abundant_sum_set
 
