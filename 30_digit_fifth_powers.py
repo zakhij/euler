@@ -8,11 +8,14 @@ As 1 = 1^4 is not a sum it is not included.
 The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 
-Computational Analysis:
+Computational Analysis: It's a bit difficult to describe the runtime complexity. The work done
+per number is dependent on its digit count (d) and the number of numbers checked (n), O(n*d).
+We can relate these to the input power, p: d scales linearly with p, n scales exponentially.
+So in total, O(p*9^p). Space complexity is O(n) due to creating the list of digits per number.
 
-DSA:
+DSA: No special data structures or algo's used for this problem. 
 
-Math:
+Math: No special math properties used for this problem. 
 
 """
 
