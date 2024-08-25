@@ -88,6 +88,38 @@ def get_distinct_powers_2_to_n2(n: int) -> int:
     return len(distinct_set)
 
 
+"""
+Program Attempt 3:
+Just for fun, I try to implement a more generalized version of attempt 1
+to see if I can get the answer using that methodology. My attempt still
+failed, unfortunately. 
+"""
+
+
+def get_duplicates_on_base(base: int, max: int) -> int:
+    sum = 0
+    for i in range(2, max):
+        if base**i < max:
+            isDerived.append(base**i)
+            max_duplicate_power = max // i
+            sum += max_duplicate_power
+        else:
+            break
+
+    return sum
+
+
+def get_distinct_powers_2_to_n3(n: int) -> int:
+    global isDerived
+    isDerived = []
+    duplicates_sum = 0
+    for i in range(2, n):
+        if i not in isDerived:
+            duplicates_sum += get_duplicates_on_base(i, n)
+
+    return (n - 1) ** 2 - duplicates_sum
+
+
 if __name__ == "__main__":
     ans = get_distinct_powers_2_to_n2(100)
     print(ans)
