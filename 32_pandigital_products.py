@@ -9,11 +9,16 @@ written as a 1 through 9 pandigital. HINT: Some products can be obtained in more
 than one way so be sure to only include it once in your sum.
 
 
-Computational Analysis: 
+Computational Analysis: The runtime complexity scales with the number of multicand,
+multiplier pairs we iterate over: we perform constant time operations in each 
+iteration. The space complexity scales with the number of pandigital products, due
+to the set.
 
-DSA:
+DSA: We effectively perform brute-force search, with some optimizations to reduce
+the search space. We employ a set to effectively handle duplicate products.  
 
-Math:
+Math: The main math property leveraged in our solution is regarding anticipating
+the number of digits possible in the multicand and multiplier. 
 
 """
 
@@ -23,12 +28,11 @@ Interesting. My first thought goes towards a brute force implementation, trying
 every combination in the given space. However, we can be smart in choosing our
 space to iterate over. I'm looking at the number of digits, specifically, since
 we know for sure that the multicand/multiplier/product must be 9 digits total.
-So that limits us to 1 x 4 = 4 and 2 x 3 = 5, I believe. But we can go further
-in choosing our space, because there also can't be duplicate digits in the 
-multicand and multiplier
+So that limits us to 1 x 4 = 4 and 2 x 3 = 5, I believe. 
 It's also critical to have a helper function that validates whether a given
 multiplier, multicand pair gives a product that satisfies our definition.
 """
+
 
 def is_pandigital_product(multicand: int, multiplier: int) -> bool:
     digit_set = set()
@@ -38,43 +42,38 @@ def is_pandigital_product(multicand: int, multiplier: int) -> bool:
         elif digit in digit_set:
             return False
         digit_set.add(digit)
-    
+
     for digit in str(multiplier):
         if digit == "0":
             return False
         elif digit in digit_set:
             return False
         digit_set.add(digit)
-    
-    for digit in str(multiplier*multicand):
+
+    for digit in str(multiplier * multicand):
         if digit == "0":
             return False
         elif digit in digit_set:
             return False
         digit_set.add(digit)
 
-    print(f"{multicand} * {multiplier} = {multicand*multiplier}")
     return True
 
 
 def get_pandigital_products() -> int:
-    total = 0
     prod_set = set()
 
-    for multicand in range(1,10):
-        for multiplier in range(1000,9999):
+    for multicand in range(1, 10):
+        for multiplier in range(1000, 9999):
             if is_pandigital_product(multicand, multiplier):
-                    prod_set.add(multicand*multiplier)
-    
-    for multicand in range(11,100):
-        for multiplier in range(100,999):
-            if is_pandigital_product(multicand, multiplier):
-                prod_set.add(multicand*multiplier)
-                
+                prod_set.add(multicand * multiplier)
 
-    print(prod_set)
+    for multicand in range(11, 100):
+        for multiplier in range(100, 999):
+            if is_pandigital_product(multicand, multiplier):
+                prod_set.add(multicand * multiplier)
+
     return sum(prod_set)
-
 
 
 if __name__ == "__main__":
