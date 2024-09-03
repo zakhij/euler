@@ -43,9 +43,41 @@ and we need to iterate over all valid extra digit values for each pair. We need 
 determine whether a given numer, denom, and extra digit is valid for this exercise. We need to contain 
 all the valid fractions. Then, we need a helper function that can provide us the end result, the simplified
 denominator of the product of all valid fractions.
-
 """
 
 
+def is_valid_fraction(numer: int, denom: int, digit: int) -> bool:
+
+    new_numer = int(str(numer) + str(digit))
+    new_denom = int(str(digit) + str(denom))
+
+    return new_numer / new_denom == numer / denom
+
+
+def main() -> None:
+    import math
+
+    numers = []
+    denoms = []
+    for denom in range(2, 10):
+        for numer in range(1, denom):
+            for digit in range(1, 10):
+                if is_valid_fraction(numer, denom, digit):
+                    numers.append(numer)
+                    denoms.append(denom)
+                    print(f"numer {numer}, denom {denom}, digit {digit}")
+
+    product_numer = 1
+    for numer in numers:
+        product_numer *= numer
+
+    product_denom = 1
+    for denom in denoms:
+        product_denom *= denom
+
+    numer_gcd = math.gcd(product_numer, product_denom)
+    print(product_denom // numer_gcd)
+
+
 if __name__ == "__main__":
-    pass
+    main()
