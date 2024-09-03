@@ -35,7 +35,14 @@ We follow these rules:
 - Original denominator > original numerator
 - Extra digit is 1-9
 - The index of the extra digit in the numerator > index of the extra digit in the denominator
-Hmmm. I still don't have confidence in this approach. Let's ask ChatGPT...
+Hmmm. I still don't have confidence in this approach. WAIT! I'm so silly, I'm forgetting a key thing, that
+we are only examining fractions where the numerator and denominator each contain 2 digits, just like
+the provided example of 49/98. Okay, that greatly reduces the search space. So now, let's think about
+what components we need... We need a nested loop to iterate over all valid numerator and denominator pairs,
+and we need to iterate over all valid extra digit values for each pair. We need a helper function to 
+determine whether a given numer, denom, and extra digit is valid for this exercise. We need to contain 
+all the valid fractions. Then, we need a helper function that can provide us the end result, the simplified
+denominator of the product of all valid fractions.
 
 """
 
