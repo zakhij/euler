@@ -7,11 +7,20 @@ There are exactly four non-trivial examples of this type of fraction, less than 
 and containing two digits in the numerator and denominator. If the product of these four fractions 
 is given in its lowest common terms, find the value of the denominator.
 
-Computational Analysis:
+Computational Analysis: While there isn't an input variable n to cleanly describe the computational
+complexity with, we should still note that the runtime includes a nested loop on three variables:
+the denominator, the numerator, and the extra digit. The extra digit range is constant, while the
+denominator and numerator ranges are dictated by the specific problem condition (containing 2 digits).
+The helper function inside the nested loop is constant, however. Space complexity is dictated by
+the two data structures for storing numerators and denominators. In theory, though, these are not 
+necessary, and so it could be constant.
 
-DSA:
+DSA: Our strategy boils down to combinatorial exploration: iterating over the entire possible solution
+space and checking each potential solution. 
 
-Math:
+Math: We leverage some math principles for micro-optimizations of our solution, such as observing that
+the numerator must be smaller than the denominator and that the extra digit must be placed at the back
+of the numerator and the front of the denominator. Additionally, we use gcd when getting the final solution.
 
 """
 
