@@ -66,12 +66,22 @@ factor. So instead of iterating over rather large nested loops in testing pairs,
 from the ground up. We'd still use a nested loop, but it would be iterating over smaller ranges
 Using this new formulation, we can describe the perimeter p = k(m^2-n^2 + 2mn + m^2+n^2) = 2km(m+n). We know that
 the absolute minimum value of k is 1 and of n is 2. As such, using our p < 1000 constraint, we find that the max possible 
-valid value of m is 21: 1000=2m(m+2) --> 500 = m^2 + 2m --> m^2 + 2m - 500 --> x = 21.4. 
+valid value of m is 21: p=2m(m+2) --> p/2 = m^2 + 2m -> m^2 + 2m - p/2 = 0 --> m = sqrt(p/2)
+
+500 = m^2 + 2m --> m^2 + 2m - 500 --> x = 21.4. 
 """
 
 
 def calc_perimeter(k: int, m: int, n: int) -> int:
     return 2 * k * m * (m + n)
+
+
+def get_m_limit(p: int) -> int:
+    from math import sqrt
+
+    numer = -4 + sqrt(16 + 8 * p)
+    denom = 4
+    return int(numer / denom)
 
 
 def main2(p: int) -> int:
@@ -80,7 +90,8 @@ def main2(p: int) -> int:
 
     perimeter_counts = Counter()
 
-    for m in range(3, p // 2):
+    for m in range(3, get_m_limit(p) + 1):
+
         for n in range(2, m):
             k = 1
             if gcd(n, m) == 1:
