@@ -12,11 +12,13 @@ Hexagonal: H_n = n(2n - 1)
 It can be verified that T_285 = P_165 = H_143 = 40755.
 Find the next triangle number that is also pentagonal and hexagonal.
 
-Computational Analysis:
+Computational Analysis: Our program runs in O(n) time, where n is the number of triangular terms we must
+iterate across (we perform constant time work per term, though). Space complexity is constant, we don't
+use any data containers. 
 
-DSA:
+DSA: This is a brute force operation, iterating across until specific criteria is met.
 
-Math:
+Math: We leverage algebra in defining the helper validation functions. That's about it.
 
 """
 
